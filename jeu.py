@@ -8,14 +8,12 @@ class Balloune():
         self.pos_y = pos_y
 
 class Modele():
-    def __init__(self, parent, largeur, hauteur):
-        self.parent = parent
-        self.largeur = largeur
-        self.hauteur = hauteur
-        self.delai_creation_max = 20
-        self.delai_creation = 0
-        self.points = None
-        self.ballounes = []
+    def __init__(self):
+        pass
+
+class Carree():
+    def __init__(self):
+        pass
 
 class Vue():
     def __init__(self, parent, largeur, hauteur):         # c'est une convention de dire self mais c'est une variable comme une autre
