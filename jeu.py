@@ -6,10 +6,12 @@ class Modele():
         self.largeur = largeur
         self.hauteur = hauteur
         self.carre = Carre(self, 40, 185, 185)
-        self.rectangle1 = Rectangle(self, 50, 50, 75, 75, 5)
-        self.rectangle2 = Rectangle(self, 50, 40, 270, 65, 5)
-        self.rectangle3 = Rectangle(self, 30, 60, 70, 280, 5)
-        self.rectangle4 = Rectangle(self, 100, 20, 230, 300, 5)
+        self.rectangles = [
+            Rectangle(self, 50, 50, 75, 75, 5),
+            Rectangle(self, 50, 40, 270, 65, 5),
+            Rectangle(self, 30, 60, 70, 280, 5),
+            Rectangle(self, 100, 20, 230, 300, 5)
+        ]
 
 class Carre():
     def __init__(self, parent, dimension, posX, posY):
@@ -28,6 +30,11 @@ class Rectangle():
         self.posY = posY
         self.couleur = "blue"
         self.vitesse = vitesse
+        self.direction = 1
+
+    def bouger_rectangles(self, largeur, hauteur):
+        self.posX += self.vitesse * self.direction
+        # if self.posX <= 0
 
 class Vue:
     def __init__(self, parent, largeur, hauteur):
@@ -69,21 +76,25 @@ class Controleur():                     # Normalement entre le () se trouve ce q
         return self.modele.carre.posX, self.modele.carre.posY, self.modele.carre.dimension, self.modele.carre.couleur
 
     def info_rectangle1(self):
-        return self.modele.rectangle1.posX, self.modele.rectangle1.posY, self.modele.rectangle1.hauteur, self.modele.rectangle1.largeur, self.modele.rectangle1.couleur
+        return self.modele.rectangles[0].posX, self.modele.rectangles[0].posY, self.modele.rectangles[0].hauteur, self.modele.rectangles[0].largeur, self.modele.rectangles[0].couleur
 
     def info_rectangle2(self):
-        return self.modele.rectangle2.posX, self.modele.rectangle2.posY, self.modele.rectangle2.hauteur, self.modele.rectangle2.largeur, self.modele.rectangle2.couleur
+        return self.modele.rectangles[1].posX, self.modele.rectangles[1].posY, self.modele.rectangles[1].hauteur, self.modele.rectangles[1].largeur, self.modele.rectangles[1].couleur
 
     def info_rectangle3(self):
-        return self.modele.rectangle3.posX, self.modele.rectangle3.posY, self.modele.rectangle3.hauteur, self.modele.rectangle3.largeur, self.modele.rectangle3.couleur
+        return self.modele.rectangles[2].posX, self.modele.rectangles[2].posY, self.modele.rectangles[2].hauteur, self.modele.rectangles[2].largeur, self.modele.rectangles[2].couleur
 
     def info_rectangle4(self):
-        return self.modele.rectangle4.posX, self.modele.rectangle4.posY, self.modele.rectangle4.hauteur, self.modele.rectangle4.largeur, self.modele.rectangle4.couleur
-
+        return self.modele.rectangles[3].posX, self.modele.rectangles[3].posY, self.modele.rectangles[3].hauteur, self.modele.rectangles[3].largeur, self.modele.rectangles[3].couleur
+    
     def detecter_clique(self, event):
         carre = self.modele.carre
         if (carre.posX <= event.x <= carre.posX + carre.dimension and carre.posY <= event.y <= carre.posY + carre.dimension):
-            print("clique detecter")
+            self.jouer()
+
+    def jouer():
+        while True:
+            pass
 
 if __name__ == "__main__":
     c = Controleur()
