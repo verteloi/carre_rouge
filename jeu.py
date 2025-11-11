@@ -91,9 +91,9 @@ class Controleur():                     # Normalement entre le () se trouve ce q
         carre = self.modele.carre
         if (carre.posX <= event.x <= carre.posX + carre.dimension and carre.posY <= event.y <= carre.posY + carre.dimension):
             self.jouer()
+            print("carre rouge cliqué")
 
-    def jouer():
-        while True:
+    def jouer(self):
             pass
 
 if __name__ == "__main__":
